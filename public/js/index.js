@@ -941,7 +941,7 @@ var items = new autoComplete({
 
     document.querySelector(".autoComplete_result").innerHTML = selection; // Clear Input
 
-    document.querySelector("#autoComplete").value = ""; // Change placeholder with the selected value
+    document.querySelector("#autoComplete").value = ""; // Change input value with the selected value
 
     document.querySelector("#autoComplete").value = selection; // Concole log autoComplete data feedback
 
