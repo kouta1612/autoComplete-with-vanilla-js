@@ -2,11 +2,11 @@ new autoComplete({
     data: {                              // Data src [Array, Function, Async] | (REQUIRED)
       src: async () => {
         // API key token
-        const token = "this_is_the_API_token_number";
+        const token = "de3e52a0abc5a3bd7ef7ef16cd709bfa";
         // User search query
         const query = document.querySelector("#autoComplete").value;
         // Fetch External Data Source
-        const source = await fetch(`../node_modules/@tarekraafat/autocomplete.js/dist/db/generic.json`);
+        const source = await fetch(`https://www.food2fork.com/api/search?key=${token}&q=${query}`);
         // Format data into JSON
         const data = await source.json();
         // Return Fetched data

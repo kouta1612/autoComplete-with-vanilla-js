@@ -865,12 +865,12 @@ new autoComplete({
             switch (_context.prev = _context.next) {
               case 0:
                 // API key token
-                token = "this_is_the_API_token_number"; // User search query
+                token = "de3e52a0abc5a3bd7ef7ef16cd709bfa"; // User search query
 
                 query = document.querySelector("#autoComplete").value; // Fetch External Data Source
 
                 _context.next = 4;
-                return fetch("../node_modules/@tarekraafat/autocomplete.js/dist/db/generic.json");
+                return fetch("https://www.food2fork.com/api/search?key=".concat(token, "&q=").concat(query));
 
               case 4:
                 source = _context.sent;

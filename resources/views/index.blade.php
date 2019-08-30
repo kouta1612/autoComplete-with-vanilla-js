@@ -6,7 +6,7 @@
 </head>
 <body>
     <input id="autoComplete">
-    <script src="/js/app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@6.1.0/dist/js/autoComplete.min.js"></script>
     <script src="/js/index.js"></script>
 </body>
 </html>
