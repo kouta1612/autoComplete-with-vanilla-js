@@ -852,36 +852,31 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-new autoComplete({
+var items = new autoComplete({
   data: {
     // Data src [Array, Function, Async] | (REQUIRED)
     src: function () {
       var _src = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var token, query, source, data;
+        var source, data;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                // API key token
-                token = "de3e52a0abc5a3bd7ef7ef16cd709bfa"; // User search query
+                _context.next = 2;
+                return fetch('https://tarekraafat.github.io/autoComplete.js/demo/db/generic.json');
 
-                query = document.querySelector("#autoComplete").value; // Fetch External Data Source
-
-                _context.next = 4;
-                return fetch("https://www.food2fork.com/api/search?key=".concat(token, "&q=").concat(query));
-
-              case 4:
+              case 2:
                 source = _context.sent;
-                _context.next = 7;
+                _context.next = 5;
                 return source.json();
 
-              case 7:
+              case 5:
                 data = _context.sent;
-                return _context.abrupt("return", data.recipes);
+                return _context.abrupt("return", data);
 
-              case 9:
+              case 7:
               case "end":
                 return _context.stop();
             }
@@ -895,14 +890,8 @@ new autoComplete({
 
       return src;
     }(),
-    key: ["title"],
+    key: ["food", 'cities', 'animals'],
     cache: false
-  },
-  query: {
-    // Query Interceptor               | (Optional)
-    manipulate: function manipulate(query) {
-      return query.replace("pizza", "burger");
-    }
   },
   sort: function sort(a, b) {
     // Sort rendered results ascendingly | (Optional)
@@ -914,15 +903,10 @@ new autoComplete({
   // Place Holder text                 | (Optional)
   selector: "#autoComplete",
   // Input field selector              | (Optional)
-  threshold: 3,
+  threshold: 0,
   // Min. Chars length to start Engine | (Optional)
-  debounce: 300,
-  // Post duration for engine to start | (Optional)
   searchEngine: "strict",
   // Search Engine type/mode           | (Optional)
-  customEngine: function customEngine(query, record) {// Custom Search Engine Algorithm    | (Optional)
-    // Custom Search Engine Algorithm..
-  },
   resultsList: {
     // Rendered results list object      | (Optional)
     render: true,

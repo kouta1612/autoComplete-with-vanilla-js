@@ -1,24 +1,14 @@
-new autoComplete({
+var items = new autoComplete({
     data: {                              // Data src [Array, Function, Async] | (REQUIRED)
       src: async () => {
-        // API key token
-        const token = "de3e52a0abc5a3bd7ef7ef16cd709bfa";
-        // User search query
-        const query = document.querySelector("#autoComplete").value;
-        // Fetch External Data Source
-        const source = await fetch(`https://www.food2fork.com/api/search?key=${token}&q=${query}`);
+        const source = await fetch('https://tarekraafat.github.io/autoComplete.js/demo/db/generic.json');
         // Format data into JSON
         const data = await source.json();
         // Return Fetched data
-        return data.recipes;
+        return data;
       },
-      key: ["title"],
+      key: ["food", 'cities', 'animals'],
       cache: false
-    },
-    query: {                               // Query Interceptor               | (Optional)
-          manipulate: (query) => {
-            return query.replace("pizza", "burger");
-          }
     },
     sort: (a, b) => {                    // Sort rendered results ascendingly | (Optional)
         if (a.match < b.match) return -1;
@@ -27,14 +17,9 @@ new autoComplete({
     },
     placeHolder: "Food & Drinks...",     // Place Holder text                 | (Optional)
     selector: "#autoComplete",           // Input field selector              | (Optional)
-    threshold: 3,                        // Min. Chars length to start Engine | (Optional)
-    debounce: 300,                       // Post duration for engine to start | (Optional)
+    threshold: 0,                        // Min. Chars length to start Engine | (Optional)
     searchEngine: "strict",              // Search Engine type/mode           | (Optional)
-    customEngine: (query, record) => {   // Custom Search Engine Algorithm    | (Optional)
-
-      // Custom Search Engine Algorithm..
-
-    },
+    
     resultsList: {                       // Rendered results list object      | (Optional)
         render: true,
         container: source => {
