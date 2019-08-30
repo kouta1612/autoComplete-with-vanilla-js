@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+    <input id="autoComplete">
+    <script src="/js/app.js"></script>
+    <script src="/js/index.js"></script>
+</body>
+</html>
