@@ -50291,8 +50291,6 @@ var items = new autoComplete({
   // Place Holder text                 | (Optional)
   selector: "#autoComplete",
   // Input field selector              | (Optional)
-  threshold: 0,
-  // Min. Chars length to start Engine | (Optional)
   searchEngine: "strict",
   // Search Engine type/mode           | (Optional)
   resultsList: {
@@ -50326,8 +50324,16 @@ var items = new autoComplete({
     document.querySelector("#autoComplete_results_list").appendChild(result);
   },
   onSelection: function onSelection(feedback) {
-    // Action script onSelection event | (Optional)
-    console.log(feedback.selection.value.image_url);
+    // Action script onSelection event | (Optional) リストアイテムを選択した時の処理
+    var selection = feedback.selection.value.food; // Render selected choice to selection div
+
+    document.querySelector(".autoComplete_result").innerHTML = selection; // Clear Input
+
+    document.querySelector("#autoComplete").value = ""; // Change placeholder with the selected value
+
+    document.querySelector("#autoComplete").value = selection; // Concole log autoComplete data feedback
+
+    console.log(feedback);
   }
 });
 
