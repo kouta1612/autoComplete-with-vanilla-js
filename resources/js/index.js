@@ -1,13 +1,14 @@
 var items = new autoComplete({
     data: {                              // Data src [Array, Function, Async] | (REQUIRED)
       src: async () => {
-        const source = await fetch('https://tarekraafat.github.io/autoComplete.js/demo/db/generic.json');
+        const input = document.getElementById('autoComplete').value;
+        const source = await fetch(`/test?key=${input}`);
         // Format data into JSON
         const data = await source.json();
         // Return Fetched data
         return data;
       },
-      key: ["food", 'cities', 'animals'],
+      key: ['jp_name', 'en_name', 'hiragana', 'katakana'],
       cache: false
     },
     sort: (a, b) => {                    // Sort rendered results ascendingly | (Optional)
@@ -18,7 +19,6 @@ var items = new autoComplete({
     placeHolder: "Food & Drinks...",     // Place Holder text                 | (Optional)
     selector: "#autoComplete",           // Input field selector              | (Optional)
     searchEngine: "strict",              // Search Engine type/mode           | (Optional)
-    
     resultsList: {                       // Rendered results list object      | (Optional)
         render: true,
         container: source => {
@@ -29,11 +29,11 @@ var items = new autoComplete({
         position: "afterend",
         element: "ul"
     },
-    maxResults: 5,                         // Max. number of rendered results | (Optional)
+    maxResults: 10,                         // Max. number of rendered results | (Optional)
     highlight: true,                       // Highlight matching results      | (Optional)
     resultItem: {                          // Rendered result item            | (Optional)
         content: (data, source) => {
-            source.innerHTML = data.match;
+            source.innerHTML = data.value.jp_name;
         },
         element: "li"
     },
@@ -45,14 +45,12 @@ var items = new autoComplete({
         document.querySelector("#autoComplete_results_list").appendChild(result);
     },
     onSelection: feedback => {             // Action script onSelection event | (Optional) リストアイテムを選択した時の処理
-        const selection = feedback.selection.value.food;
+        const selection = feedback.selection.value.jp_name;
         // Render selected choice to selection div
         document.querySelector(".autoComplete_result").innerHTML = selection;
         // Clear Input
         document.querySelector("#autoComplete").value = "";
         // Change input value with the selected value
         document.querySelector("#autoComplete").value = selection;
-        // Concole log autoComplete data feedback
-        console.log(feedback);
     }
 });

@@ -27,11 +27,12 @@ class ItemSeederTable extends Seeder
         foreach ($file as $key => $line) {
             if ($key == 0) continue;
             $list[] = [
-                'jp_name' => $line[0],
-                'en_name' => $line[1],
-                'hiragana' => $line[2],
-                'katakana' => $line[3],
-                'parent_id' => $line[4],
+                'id' => $line[0],
+                'jp_name' => $line[1],
+                'en_name' => $line[2],
+                'hiragana' => $line[3],
+                'katakana' => $line[4],
+                'parent_id' => $line[5],
                 'created_at' => $now,
                 'updated_at' => $now
             ];
